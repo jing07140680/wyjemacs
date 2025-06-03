@@ -55,10 +55,20 @@
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- '(package-selected-packages '(counsel swiper ivy use-package)))
+ '(package-selected-packages '(windresize counsel swiper ivy use-package)))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  )
+
+(add-hook 'find-file-hook
+          (lambda ()
+            (when (string-match "\\.conf\\'" buffer-file-name)
+              (read-only-mode 1))))
+
+(use-package windresize
+  :ensure t
+  :bind ("C-c w" . windresize))
+
